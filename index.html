@@ -1,175 +1,134 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VIP Reviews — خدمة تقييمات جوجل شرعية</title>
-  <!-- Tailwind CDN (سريع للاختبار) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIP Reviews</title>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
   <style>
-    :root{
-      --blue:#0b63d6;    /* رئيسي */
-      --gold:#d4af37;    /* لمسات ذهبية */
-      --muted:#eef6ff;
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(to bottom, #0a4a9f, #ffffff);
+      color: #003366;
+      text-align: center;
     }
-    body{ background: linear-gradient(180deg,var(--muted),#fff 60%); }
+    header {
+      background-color: #0a4a9f;
+      color: white;
+      padding: 20px;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-align: left;
+      padding-left: 40px;
+    }
+    form {
+      background: white;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: right;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #0a4a9f;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1em;
+    }
+    .price-box {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      text-align: center;
+      border: 1px solid #eee;
+      font-size: 1.1em;
+    }
+    .highlight {
+      color: #c9a020;
+      font-weight: bold;
+    }
+    #paypal-button-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #0a4a9f;
+      color: white;
+      font-size: 0.9em;
+    }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6">
-  <div class="max-w-2xl w-full bg-white rounded-2xl shadow-xl overflow-hidden rtl">
-    <!-- Header -->
-    <header class="bg-gradient-to-r from-blue-600 to-blue-500 text-white p-6">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-6">
-          <!-- شعار أبيض على اليسار -->
-          <div class="text-white font-extrabold text-3xl select-none">VIP Reviews</div>
-        </div>
-        <div class="text-right">
-          <div class="text-xs text-yellow-300 font-semibold">آمن وشَريع</div>
-          <div class="text-xs">خدمة متاحة للدول العربية</div>
-        </div>
-      </div>
-    </header>
+<body>
+  <header>VIP Reviews</header>
 
-    <!-- Content -->
-    <main class="p-6">
-      <form id="orderForm" class="space-y-4">
-        <div>
-          <label class="block text-sm font-medium text-gray-700">اسم المشروع / المحل</label>
-          <input id="businessName" required type="text" class="mt-1 block w-full rounded-lg border p-3" placeholder="مثال: مطعم الليمون" />
-        </div>
+  <form id="reviewForm">
+    <label>اسم المشروع أو المطعم</label>
+    <input type="text" id="projectName" placeholder="أدخل اسم المشروع">
 
-        <div>
-          <label class="block text-sm font-medium text-gray-700">العنوان</label>
-          <input id="address" required type="text" class="mt-1 block w-full rounded-lg border p-3" placeholder="المدينة، الشارع..." />
-        </div>
+    <label>العنوان</label>
+    <input type="text" id="address" placeholder="أدخل العنوان">
 
-        <div>
-          <label class="block text-sm font-medium text-gray-700">رقم التواصل (واتساب/هاتف)</label>
-          <input id="phone" required type="tel" class="mt-1 block w-full rounded-lg border p-3" placeholder="+971 5x xxx xxxx" />
-        </div>
+    <label>رقم التواصل</label>
+    <input type="text" id="phone" placeholder="أدخل رقم الهاتف">
 
-        <div>
-          <label class="block text-sm font-medium text-gray-700">اختر الباقة</label>
-          <div class="mt-2 grid grid-cols-3 gap-3">
-            <label class="package cursor-pointer p-3 rounded-lg border flex flex-col items-center text-center" data-count="10" data-price="5">
-              <div class="text-xl font-bold">10</div>
-              <div class="text-xs">تقييم</div>
-              <div class="mt-2 text-sm text-gray-600">سعر <strong>$5</strong></div>
-            </label>
+    <label>اختر عدد التقييمات المطلوبة</label>
+    <select id="reviewsCount">
+      <option value="5">10 تقييمات - 5 دولار</option>
+      <option value="8">20 تقييم - 8 دولار</option>
+      <option value="25">30 تقييم - 25 دولار</option>
+    </select>
 
-            <label class="package cursor-pointer p-3 rounded-lg border flex flex-col items-center text-center" data-count="20" data-price="8">
-              <div class="text-xl font-bold">20</div>
-              <div class="text-xs">تقييم</div>
-              <div class="mt-2 text-sm text-gray-600">سعر <strong>$8</strong></div>
-            </label>
+    <div class="price-box">
+      السعر الإجمالي: <span class="highlight" id="totalPrice">5</span> دولار
+    </div>
 
-            <label class="package cursor-pointer p-3 rounded-lg border flex flex-col items-center text-center" data-count="30" data-price="25">
-              <div class="text-xl font-bold">30</div>
-              <div class="text-xs">تقييم</div>
-              <div class="mt-2 text-sm text-gray-600">سعر <strong>$25</strong></div>
-            </label>
-          </div>
-        </div>
+    <div id="paypal-button-container"></div>
+  </form>
 
-        <div class="flex items-center justify-between mt-3">
-          <div>
-            <div class="text-sm text-gray-600">العدد المختار: <span id="selectedCount">-</span></div>
-            <div class="text-sm text-gray-600">السعر: <span id="selectedPrice">-</span> USD</div>
-          </div>
-          <div>
-            <div class="text-xs text-gray-400">يمكنك الدفع عبر PayPal</div>
-            <div class="text-xs text-yellow-500">لا نطلب تقييم إيجابي — الخدمة شرعية فقط</div>
-          </div>
-        </div>
-
-        <div id="paypal-area" class="mt-4">
-          <!-- PayPal Buttons ستظهر هنا -->
-          <div id="paypal-button-container"></div>
-        </div>
-
-        <div class="text-xs text-gray-400 mt-3">
-          <p>سياسة: الخدمة توجه عملاء حقيقيين لترك تقييمات صادقة. لا نشتري تقييمات مزيفة.</p>
-        </div>
-      </form>
-
-      <!-- Success message -->
-      <div id="successBox" class="hidden mt-6 p-4 bg-green-50 border rounded-lg">
-        <h3 class="font-semibold text-green-700">تم الدفع بنجاح!</h3>
-        <p class="text-sm text-gray-700 mt-2">تفاصيل الدفع:</p>
-        <pre id="paymentInfo" class="text-xs bg-white p-2 rounded mt-2 overflow-auto"></pre>
-      </div>
-    </main>
-
-    <footer class="p-4 text-center text-sm text-gray-500">
-      © <span id="year"></span> VIP Reviews — جميع الحقوق محفوظة
-    </footer>
-  </div>
-
-  <!-- PayPal SDK: استبدل CLIENT-ID بـ Client ID الخاص بك (Sandbox) -->
-<script src="https://www.paypal.com/sdk/js?client-id=AdHmL7vr5q9EziorIa1UqC2uxBRDNyzdesJJPCMJRI-XEIi17Mx-yTEX5v2ODFZPqnv_3A1xbJfNLOiG&currency=USD"></script>
+  <footer>© 2025 VIP Reviews - جميع الحقوق محفوظة</footer>
 
   <script>
-    // إعداد الواجهة
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const packages = document.querySelectorAll('.package');
-    let selected = null;
-
-    packages.forEach(p => {
-      p.addEventListener('click', () => {
-        packages.forEach(x=> x.classList.remove('ring','ring-2','ring-gold','border-blue-500','bg-blue-50','text-white'));
-        p.classList.add('ring','ring-2','border-blue-500','bg-blue-50');
-        const count = p.dataset.count;
-        const price = p.dataset.price;
-        selected = {count: Number(count), price: Number(price)};
-        document.getElementById('selectedCount').textContent = count + ' تقييم';
-        document.getElementById('selectedPrice').textContent = price.toFixed(2);
-        renderPayPal(selected.price);
-      });
+    const select = document.getElementById('reviewsCount');
+    const totalPrice = document.getElementById('totalPrice');
+    select.addEventListener('change', function() {
+      totalPrice.textContent = this.value;
     });
 
-    // Default: اختَر الباقة الأولى تلقائياً
-    packages[0].click();
-
-    function renderPayPal(amount) {
-      const container = document.getElementById('paypal-button-container');
-      container.innerHTML = '';
-
-      paypal.Buttons({
-        style: { layout: 'vertical', color: 'blue', shape: 'pill', label: 'pay' },
-        createOrder: function(data, actions) {
-          if (!selected) {
-            alert('اختر باقة أولاً');
-            return;
-          }
-          return actions.order.create({
-            purchase_units: [{
-              amount: {
-                currency_code: 'USD',
-                value: amount.toFixed(2)
-              },
-              description: `${selected.count} تقييمات — VIP Reviews`
-            }],
-            application_context: {
-              shipping_preference: 'NO_SHIPPING'
-            }
-          });
-        },
-        onApprove: function(data, actions) {
-          return actions.order.capture().then(function(details) {
-            document.getElementById('paymentInfo').textContent = JSON.stringify(details, null, 2);
-            document.getElementById('successBox').classList.remove('hidden');
-            alert('تم الدفع بنجاح — شكراً! سيصلنا طلبك وسيتم المتابعة.');
-          });
-        },
-        onError: function(err) {
-          console.error(err);
-          alert('حصل خطأ أثناء عملية الدفع. حاول مرة أخرى.');
-        }
-      }).render('#paypal-button-container');
-    }
-
-    document.getElementById('orderForm').addEventListener('submit', (e) => e.preventDefault());
+    paypal.Buttons({
+      style: {
+        color: 'blue',
+        shape: 'rect',
+        label: 'paypal',
+        height: 40
+      },
+      createOrder: function(data, actions) {
+        const amount = document.getElementById('totalPrice').textContent;
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: amount }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('تم الدفع بنجاح بواسطة ' + details.payer.name.given_name + ' 🎉');
+          console.log(details);
+        });
+      }
+    }).render('#paypal-button-container');
   </script>
 </body>
 </html>
