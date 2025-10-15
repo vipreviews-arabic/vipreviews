@@ -75,29 +75,29 @@
 <body>
   <header>VIP Reviews</header>
 
-  <form id="reviewForm">
-    <label>اسم المشروع أو المطعم</label>
-    <input type="text" id="projectName" placeholder="أدخل اسم المشروع">
+ <form action="https://formspree.io/f/mnngldpr" method="POST">
+  <label>اسم المشروع أو المطعم</label>
+  <input type="text" name="projectName" placeholder="أدخل اسم المشروع" required>
 
-    <label>العنوان</label>
-    <input type="text" id="address" placeholder="أدخل العنوان">
+  <label>العنوان</label>
+  <input type="text" name="address" placeholder="أدخل العنوان" required>
 
-    <label>رقم التواصل</label>
-    <input type="text" id="phone" placeholder="أدخل رقم الهاتف">
+  <label>رقم التواصل</label>
+  <input type="text" name="phone" placeholder="أدخل رقم الهاتف" required>
 
-    <label>اختر عدد التقييمات المطلوبة</label>
-    <select id="reviewsCount">
-      <option value="5">10 تقييمات - 5 دولار</option>
-      <option value="8">20 تقييم - 8 دولار</option>
-      <option value="25">30 تقييم - 25 دولار</option>
-    </select>
+  <label>اختر عدد التقييمات المطلوبة</label>
+  <select name="reviewsCount" required>
+    <option value="10 تقييمات - 5 دولار">10 تقييمات - 5 دولار</option>
+    <option value="20 تقييم - 8 دولار">20 تقييم - 8 دولار</option>
+    <option value="30 تقييم - 25 دولار">30 تقييم - 25 دولار</option>
+  </select>
 
-    <div class="price-box">
-      السعر الإجمالي: <span class="highlight" id="totalPrice">5</span> دولار
-    </div>
+  <div class="price-box">
+    السعر الإجمالي: <span class="highlight" id="totalPrice">5</span> دولار
+  </div>
 
-    <div id="paypal-button-container"></div>
-  </form>
+  <button type="submit">إرسال الطلب</button>
+</form>
 
   <footer>© 2025 VIP Reviews - جميع الحقوق محفوظة</footer>
 
@@ -132,4 +132,5 @@
   </script>
 </body>
 </html>
+
 
