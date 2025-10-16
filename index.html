@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VIP Reviews</title>
   <script src="https://www.paypal.com/sdk/js?client-id=AY6uuSkwLit9xNpYa3OEbzeo6A5qEBjXXWr6cueniwUgTUJHneYThru32hoXfrevvWkq93HopHqBYFXo&currency=USD"></script>
-  
+
   <style>
     body {
       margin: 0;
@@ -93,7 +93,7 @@
     </select>
 
     <div class="price-box">
-      السعر الإجمالي: <span class="highlight" id="totalPrice">5</span> دولار
+      السعر الإجمالي: <span class="highlight" id="totalPrice">19</span> دولار
     </div>
 
     <div id="paypal-button-container"></div>
@@ -102,14 +102,14 @@
   <footer>© 2025 VIP Reviews - جميع الحقوق محفوظة</footer>
 
   <script>
-    // تحديث السعر عند اختيار عدد التقييمات
+    // تحديث السعر عند تغيير عدد التقييمات
     const reviewsCount = document.getElementById('reviewsCount');
     const totalPrice = document.getElementById('totalPrice');
     reviewsCount.addEventListener('change', function() {
       totalPrice.textContent = this.value;
     });
 
-    // إعداد PayPal
+    // إعداد زر الدفع PayPal
     paypal.Buttons({
       style: {
         color: 'blue',
@@ -147,7 +147,3 @@
   </script>
 </body>
 </html>
-
-
-
-
