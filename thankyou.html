@@ -1,49 +1,63 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>شكراً على طلبك - VIP Reviews</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>شكراً لك - VIP Reviews</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0d47a1, #1976d2);
-      color: white;
-      text-align: center;
-      height: 100vh;
       margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(to bottom, #0a4a9f, #ffffff);
+      color: #003366;
+      text-align: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 400px;
     }
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      color: #0a4a9f;
+      margin-bottom: 10px;
+    }
+    .highlight {
+      color: #c9a020;
+      font-weight: bold;
     }
     p {
-      font-size: 1.2rem;
-      color: #ffeb3b;
+      font-size: 1.1em;
+      line-height: 1.6;
     }
     a {
       display: inline-block;
       margin-top: 20px;
+      background-color: #0a4a9f;
+      color: white;
       padding: 10px 20px;
-      background: #ffc107;
-      color: #0d47a1;
+      border-radius: 10px;
       text-decoration: none;
-      border-radius: 8px;
       font-weight: bold;
-      transition: 0.3s;
     }
     a:hover {
-      background: #ffca28;
+      background-color: #003366;
     }
   </style>
 </head>
 <body>
-  <h1>🎉 شكراً على طلبك!</h1>
-  <p>سيتم التواصل معك خلال 24 ساعة لتأكيد الخدمة.</p>
-  <a href="index.html">العودة إلى الصفحة الرئيسية</a>
+  <div class="card">
+    <h1>🎉 شكراً لك!</h1>
+    <p>تم استلام طلبك ودفعك بنجاح عبر <span class="highlight">PayPal</span>.</p>
+    <p>سيتم تنفيذ خدمتك خلال وقت قصير، وسيتم التواصل معك عبر البيانات التي أدخلتها.</p>
+    <p>💬 فريق <span class="highlight">VIP Reviews</span> يشكرك على ثقتك بنا.</p>
+    <a href="index.html">العودة إلى الصفحة الرئيسية</a>
+  </div>
 </body>
 </html>
